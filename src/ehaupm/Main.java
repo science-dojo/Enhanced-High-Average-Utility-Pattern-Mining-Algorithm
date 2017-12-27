@@ -13,42 +13,42 @@ import java.io.OutputStreamWriter;
 public class Main {
 	
 	public static void main(String[] args) throws Exception{
-//		String folder = args[0]; // specify the folder containing quantityDB and its profit table.
-//		String fileName = args[1]; // quantityDB name
-//		String quantityDBPath = folder+fileName+".txt"; // unique quantityDB address
-//		String profitPath = folder+fileName +"_UtilityTable.txt"; // unique profit table address
-//		double delta = Double.parseDouble(args[2]); // specify the minimum average utility threshold.
-//        String HAUIsPath = args[3]; // specify the file storing the discovered HAUIs. If not specify, enter `null`
-//        String statusPath = args[4]; // specify the file storing the running status of EHAUPM. If not specify, enter `null`
-//
-//        long startTimestamp = System.currentTimeMillis();
-//        EHAUPM ehaupm = new EHAUPM();
-//		ehaupm.runAlgorithm(HAUIsPath, profitPath, quantityDBPath, delta);
-//        long endTimestamp = System.currentTimeMillis();
-//
-//        BufferedWriter statusWriter = null;
-//        if(statusPath==null || statusPath.equalsIgnoreCase("null")){
-//            statusWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-//        }else {
-//            statusWriter = new BufferedWriter(new FileWriter(statusPath));
-//        }
-//
-//        statusWriter.write(String.format("Total_time(s): %.2f\n", (endTimestamp - startTimestamp) / (double)1000));
-//        statusWriter.write(String.format("Memory_usage:%.2f\n", ehaupm.memRecorder.maxConsumationMemory));
-//        statusWriter.write("Haui_count:"+ ehaupm.nhauis +"\n");
-//        statusWriter.write("Join_count:"+ ehaupm.joinCount +"\n");
+		String folder = args[0]; // specify the folder containing quantityDB and its profit table.
+		String fileName = args[1]; // quantityDB name
+		String quantityDBPath = folder+fileName+".txt"; // unique quantityDB address
+		String profitPath = folder+fileName +"_UtilityTable.txt"; // unique profit table address
+		double delta = Double.parseDouble(args[2]); // specify the minimum average utility threshold.
+        String HAUIsPath = args[3]; // specify the file storing the discovered HAUIs. If not specify, enter `null`
+        String statusPath = args[4]; // specify the file storing the running status of EHAUPM. If not specify, enter `null`
+
+        long startTimestamp = System.currentTimeMillis();
+        EHAUPM ehaupm = new EHAUPM();
+		ehaupm.runAlgorithm(HAUIsPath, profitPath, quantityDBPath, delta);
+        long endTimestamp = System.currentTimeMillis();
+
+        BufferedWriter statusWriter = null;
+        if(statusPath==null || statusPath.equalsIgnoreCase("null")){
+            statusWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        }else {
+            statusWriter = new BufferedWriter(new FileWriter(statusPath));
+        }
+
+        statusWriter.write(String.format("Total_time(s): %.2f\n", (endTimestamp - startTimestamp) / (double)1000));
+        statusWriter.write(String.format("Memory_usage:%.2f\n", ehaupm.memRecorder.maxConsumationMemory));
+        statusWriter.write("Haui_count:"+ ehaupm.nhauis +"\n");
+        statusWriter.write("candidate_count:"+ ehaupm.joinCount +"\n");
 
 
-		exe();
+//		local_exe();
 	}
 	
-	static void exe() throws Exception {
+	static void local_exe() throws Exception {
 		String location="E:\\Data_mining\\dataset\\sort_ascend_item_DB\\";
 		 String file="kosarak";
 		        file="chess";
 //		        file="retail";
-//		        file="accidents";
-                file="mushroom";
+		        file="accidents";
+//                file="mushroom";
 		 String quantityDBPath = location+file+".txt";
 		 String profitPath=location+file+"_UtilityTable.txt";
 //		 double support=1.4e-5;
@@ -64,7 +64,7 @@ public class Main {
          long startTimestamp = System.currentTimeMillis();
 
 		 EHAUPM ehaupm = new EHAUPM();
-		 ehaupm.runAlgorithm(null, profitPath, quantityDBPath, 0.003);
+		 ehaupm.runAlgorithm(null, profitPath, quantityDBPath, 0.0035);
 
 		 long endTimestamp = System.currentTimeMillis();
 
